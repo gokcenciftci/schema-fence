@@ -1,0 +1,74 @@
+{
+  "name": "schema-fence",
+  "version": "0.1.0",
+  "description": "A deterministic, local-first OpenAPI 3.0 compatibility gate for CI.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "schema-fence": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/cli.ts --format esm --dts --out-dir dist --clean",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "smoke": "node scripts/smoke.mjs",
+    "validate": "npm run lint && npm run format:check && npm run typecheck && npm run test:coverage && npm run build && npm run smoke",
+    "prepublishOnly": "npm run validate"
+  },
+  "keywords": [
+    "openapi",
+    "api",
+    "compatibility",
+    "breaking-changes",
+    "cli",
+    "ci"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gokcenciftci/schema-fence.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gokcenciftci/schema-fence/issues"
+  },
+  "homepage": "https://github.com/gokcenciftci/schema-fence#readme",
+  "dependencies": {
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@emnapi/core": "^1.11.2",
+    "@emnapi/runtime": "^1.11.2",
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^24.10.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^9.39.4",
+    "globals": "^17.7.0",
+    "prettier": "^3.8.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.62.1",
+    "vitest": "^4.1.10"
+  },
+  "overrides": {
+    "esbuild": "0.28.1"
+  }
+}

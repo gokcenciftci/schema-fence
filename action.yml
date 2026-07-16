@@ -1,0 +1,20 @@
+name: 'schema-fence'
+description: 'A deterministic, local-first OpenAPI 3.0 compatibility gate for CI.'
+author: 'Gökçen Çiftci'
+branding:
+  icon: 'shield'
+  color: 'blue'
+inputs:
+  base:
+    description: 'Path to the base OpenAPI specification file (YAML or JSON).'
+    required: true
+  candidate:
+    description: 'Path to the candidate OpenAPI specification file (YAML or JSON).'
+    required: true
+  format:
+    description: 'Output format: text or json.'
+    required: false
+    default: 'text'
+runs:
+  using: 'node20'
+  main: 'dist/cli.js'

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/gokcenciftci/schema-fence/security/advisories/new
+    about: Submit a private vulnerability report through GitHub Security Advisories.

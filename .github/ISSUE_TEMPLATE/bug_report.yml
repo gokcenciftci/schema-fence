@@ -1,0 +1,41 @@
+name: Bug report
+description: Report unexpected SchemaFence behavior.
+title: '[Bug]: '
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, private API contracts, customer data, or exploit details. See SECURITY.md for vulnerabilities.
+  - type: input
+    id: version
+    attributes:
+      label: SchemaFence version or commit
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and expected result
+      placeholder: |
+        schema-fence diff --base before.yaml --candidate after.yaml --format json
+        Expected: ...
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: Include a minimal sanitized output or reproduction.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I removed secrets and sensitive contract data.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

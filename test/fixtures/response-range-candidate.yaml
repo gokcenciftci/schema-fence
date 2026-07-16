@@ -1,0 +1,10 @@
+openapi: 3.0.3
+info:
+  title: Response range API
+  version: 2.0.0
+paths:
+  /items:
+    get:
+      responses:
+        '400':
+          description: Bad request

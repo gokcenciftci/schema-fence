@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Pet API
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      parameters:
+        - name: dryRun
+          in: query
+          required: false
+          schema:
+            type: boolean
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePet'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+  /pets/{petId}:
+    get:
+      responses:
+        '200':
+          description: A pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+components:
+  schemas:
+    CreatePet:
+      type: object
+      properties:
+        name:
+          type: string
+        species:
+          type: string
+          enum: [cat, dog]
+    Pet:
+      type: object
+      required: [id, name, adopted]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        adopted:
+          type: boolean
